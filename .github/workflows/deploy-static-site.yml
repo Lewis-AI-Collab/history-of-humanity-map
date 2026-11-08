@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       site:
-        description: LewisAGI repository. The Pages project comes from the deploy map.
+        description: Lewis-AI-Collab repository. The Pages project comes from the deploy map.
         required: true
         type: choice
         options:
@@ -82,35 +82,35 @@ jobs:
           case "$SITE_INPUT" in
             health-claims)
               SITE_NAME=health-claims
-              SITE_REMOTE=https://github.com/LewisAGI/health-claims.git
+              SITE_REMOTE=https://github.com/Lewis-AI-Collab/health-claims.git
               ;;
             psychedelics)
               SITE_NAME=psychedelics
-              SITE_REMOTE=https://github.com/LewisAGI/psychedelics.git
+              SITE_REMOTE=https://github.com/Lewis-AI-Collab/psychedelics.git
               ;;
             indigenous-australia)
               SITE_NAME=indigenous-australia
-              SITE_REMOTE=https://github.com/LewisAGI/indigenous-australia.git
+              SITE_REMOTE=https://github.com/Lewis-AI-Collab/indigenous-australia.git
               ;;
             celtic-ireland)
               SITE_NAME=celtic-ireland
-              SITE_REMOTE=https://github.com/LewisAGI/celtic-ireland.git
+              SITE_REMOTE=https://github.com/Lewis-AI-Collab/celtic-ireland.git
               ;;
             ancient-greece-med)
               SITE_NAME=ancient-greece-med
-              SITE_REMOTE=https://github.com/LewisAGI/ancient-greece-med.git
+              SITE_REMOTE=https://github.com/Lewis-AI-Collab/ancient-greece-med.git
               ;;
             uk-medicinal-plants)
               SITE_NAME=uk-medicinal-plants
-              SITE_REMOTE=https://github.com/LewisAGI/uk-medicinal-plants.git
+              SITE_REMOTE=https://github.com/Lewis-AI-Collab/uk-medicinal-plants.git
               ;;
             geography-quiz)
               SITE_NAME=geography-quiz
-              SITE_REMOTE=https://github.com/LewisAGI/geography-quiz.git
+              SITE_REMOTE=https://github.com/Lewis-AI-Collab/geography-quiz.git
               ;;
             pdf-to-audiobook)
               SITE_NAME=pdf-to-audiobook
-              SITE_REMOTE=https://github.com/LewisAGI/pdf-to-audiobook.git
+              SITE_REMOTE=https://github.com/Lewis-AI-Collab/pdf-to-audiobook.git
               ;;
             *)
               echo "Site is not in the allowlist."
@@ -118,13 +118,13 @@ jobs:
               ;;
           esac
           if ! remote_out="$(git -c credential.helper= -c http.extraheader= ls-remote "$SITE_REMOTE" refs/heads/main)"; then
-            echo "::warning title=site ls-remote::Could not query refs/heads/main on LewisAGI/${SITE_NAME}. Skipping this run."
+            echo "::warning title=site ls-remote::Could not query refs/heads/main on Lewis-AI-Collab/${SITE_NAME}. Skipping this run."
             echo "skip=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           sha="$(printf '%s\n' "$remote_out" | awk 'NR==1 {print $1}')"
           if [[ ! "$sha" =~ ^[0-9a-f]{40}$ ]]; then
-            echo "LewisAGI/${SITE_NAME} main did not resolve."
+            echo "Lewis-AI-Collab/${SITE_NAME} main did not resolve."
             exit 1
           fi
           {
@@ -160,35 +160,35 @@ jobs:
           case "$SITE_INPUT" in
             health-claims)
               SITE_NAME=health-claims
-              SITE_REMOTE=https://github.com/LewisAGI/health-claims.git
+              SITE_REMOTE=https://github.com/Lewis-AI-Collab/health-claims.git
               ;;
             psychedelics)
               SITE_NAME=psychedelics
-              SITE_REMOTE=https://github.com/LewisAGI/psychedelics.git
+              SITE_REMOTE=https://github.com/Lewis-AI-Collab/psychedelics.git
               ;;
             indigenous-australia)
               SITE_NAME=indigenous-australia
-              SITE_REMOTE=https://github.com/LewisAGI/indigenous-australia.git
+              SITE_REMOTE=https://github.com/Lewis-AI-Collab/indigenous-australia.git
               ;;
             celtic-ireland)
               SITE_NAME=celtic-ireland
-              SITE_REMOTE=https://github.com/LewisAGI/celtic-ireland.git
+              SITE_REMOTE=https://github.com/Lewis-AI-Collab/celtic-ireland.git
               ;;
             ancient-greece-med)
               SITE_NAME=ancient-greece-med
-              SITE_REMOTE=https://github.com/LewisAGI/ancient-greece-med.git
+              SITE_REMOTE=https://github.com/Lewis-AI-Collab/ancient-greece-med.git
               ;;
             uk-medicinal-plants)
               SITE_NAME=uk-medicinal-plants
-              SITE_REMOTE=https://github.com/LewisAGI/uk-medicinal-plants.git
+              SITE_REMOTE=https://github.com/Lewis-AI-Collab/uk-medicinal-plants.git
               ;;
             geography-quiz)
               SITE_NAME=geography-quiz
-              SITE_REMOTE=https://github.com/LewisAGI/geography-quiz.git
+              SITE_REMOTE=https://github.com/Lewis-AI-Collab/geography-quiz.git
               ;;
             pdf-to-audiobook)
               SITE_NAME=pdf-to-audiobook
-              SITE_REMOTE=https://github.com/LewisAGI/pdf-to-audiobook.git
+              SITE_REMOTE=https://github.com/Lewis-AI-Collab/pdf-to-audiobook.git
               ;;
             *)
               echo "Site is not in the allowlist."
@@ -218,7 +218,7 @@ jobs:
             echo "Checkout did not match the commit the gate resolved."
             exit 1
           fi
-          echo "Checked out ${GATE_SHA} from LewisAGI/${SITE_NAME}."
+          echo "Checked out ${GATE_SHA} from Lewis-AI-Collab/${SITE_NAME}."
           {
             echo "skip=false"
             echo "sha=${GATE_SHA}"
